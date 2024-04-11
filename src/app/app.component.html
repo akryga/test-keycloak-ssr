@@ -230,6 +230,18 @@
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
+      
+      <div *ngIf="userProfile; else loginButton;"  class="align-middle">
+        <span class="align-middle">{{ userProfile!.username }}</span>
+        <button mat-icon-button color="primary" *ngIf="isLoggedIn" type="button" (click)="logout()">
+          logout</button>
+      </div>
+      <ng-template #loginButton>
+        <span class="align-middle">Вход</span>
+        <button mat-icon-button color="primary" *ngIf="!isLoggedIn" type="button" (click)="login()">
+          login</button>
+      </ng-template>
+
       <div class="pill-group">
         @for (item of [
           { title: 'Explore the Docs', link: 'https://angular.dev' },
